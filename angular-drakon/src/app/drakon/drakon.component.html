@@ -1,0 +1,328 @@
+<!--------- Cadastrar ITEM ---------->
+
+<br>
+<form #frm = "ngForm" (ngSubmit)="addItem(frm)" *ngIf="!toggleForm">
+	<h2>Cadastrar item</h2>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Nome de usuário</label>
+      <input type="text" class="form-control" name="userName" value="" ngModel required>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Procedimento</label>
+      <input type="text" class="form-control" name="procedimento" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">N° Procedimento</label>
+      <input type="text" class="form-control" name="n_proced" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Data Entrada</label>
+      <input type="text" class="form-control" name="data_entrada" value="" ngModel>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Investigado(a)</label>
+    <input type="text" class="form-control" name="investigado" value="" ngModel>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Substância</label>
+      <select name="substancia" class="form-control" value="" ngModel>
+        <option>Clorofórmio</option>
+        <option>Cocaína</option>
+        <option>Comprimidos</option>
+        <option>Crack</option>
+        <option>Maconha</option>
+        <option>Outro</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputPassword4">Quantidade</label>
+      <input type="text" class="form-control" name="quant" value="" ngModel>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Unidade</label>
+      <select name="und" class="form-control" value="" ngModel>
+        <option>G</option>
+        <option>ML</option>
+        <option>Und.</option>
+      </select>
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Laudo</label>
+      <input type="text" class="form-control" name="laudo" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Vara</label>
+      <input type="text" class="form-control" name="vara" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">N° Processo</label>
+      <input type="text" class="form-control" name="n_processo" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Lacre</label>
+      <input type="text" class="form-control" name="lacre" value="" ngModel>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Data Autorização</label>
+      <input type="text" class="form-control" name="data_autorizacao" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Caixa</label>
+      <input type="text" class="form-control" name="caixa" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Ofício</label>
+      <input type="text" class="form-control" name="oficio" value="" ngModel>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Delegacia</label>
+      <input type="text" class="form-control" name="delegacia" value="" ngModel>
+    </div>
+  </div>
+
+  <button type="submit" name="button" class="btn btn-sucess" [disabled]= frm.invalid>Adicionar</button>
+</form>
+
+<!--------- EDITAR ITEM ---------->
+
+<form #editFrm = "ngForm" (ngSubmit)="editItem(editFrm)"*ngIf="toggleForm">
+	<h2>Editar item</h2>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Nome de usuário</label>
+      <input type="text" class="form-control" name="userName" value="" [ngModel]="selectedItem.userName">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Procedimento</label>
+      <input type="text" class="form-control" name="procedimento" value="" [ngModel]="selectedItem.procedimento">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">N° Procedimento</label>
+      <input type="text" class="form-control" name="n_proced" value="" [ngModel]="selectedItem.n_proced">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Data Entrada</label>
+      <input type="text" class="form-control" name="data_entrada" value="" [ngModel]="selectedItem.data_entrada">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="">Investigado(a)</label>
+    <input type="text" class="form-control" name="investigado" value="" [ngModel]="selectedItem.investigado">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Substância</label>
+      <select name="substancia" class="form-control" value="" [ngModel]="selectedItem.substancia">
+        <option>Clorofórmio</option>
+        <option>Cocaína</option>
+        <option>Comprimidos</option>
+        <option>Crack</option>
+        <option>Maconha</option>
+        <option>Outro</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Quantidade</label>
+      <input type="text" class="form-control" name="quant" value="" [ngModel]="selectedItem.quant">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Unidade</label>
+      <select name="und" class="form-control" value="" [ngModel]="selectedItem.und">
+        <option>G</option>
+        <option>ML</option>
+        <option>Und.</option>
+      </select>
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Laudo</label>
+      <input type="text" class="form-control" name="laudo" value="" [ngModel]="selectedItem.laudo">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Vara</label>
+      <input type="text" class="form-control" name="vara" value="" [ngModel]="selectedItem.vara">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">N° Processo</label>
+      <input type="text" class="form-control" name="n_processo" value="" [ngModel]="selectedItem.n_processo">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Lacre</label>
+      <input type="text" class="form-control" name="lacre" value="" [ngModel]="selectedItem.lacre">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="">Data Autorização</label>
+      <input type="text" class="form-control" name="data_autorizacao" value="" [ngModel]="selectedItem.data_autorizacao">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Caixa</label>
+      <input type="text" class="form-control" name="caixa" value="" [ngModel]="selectedItem.caixa">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Ofício</label>
+      <input type="text" class="form-control" name="oficio" value="" [ngModel]="selectedItem.oficio">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="">Delegacia</label>
+      <input type="text" class="form-control" name="delegacia" value="" [ngModel]="selectedItem.delegacia">
+    </div>
+  </div>
+
+  <button type="submit" name="button" class="btn btn-sucess">Salvar</button>
+</form>
+
+<!--------- LISTAR ITEM ---------->
+
+<br><br>
+
+<h2>
+	Lista de items:
+</h2>
+<br>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">
+        Procedimento<br>
+      </th>
+      <th class="text-center">
+        N° Procedimento<br>
+      </th>
+      <th class="text-center">
+        Data Entrada<br>
+      </th>
+      <th class="text-center">
+        Investigado(a)<br>
+      </th>
+      <th class="text-center">
+        Substância<br>
+      </th>
+      <th class="text-center">
+        Qnt.<br>
+      </th>
+      <th class="text-center">
+        Und.<br>
+      </th>
+      <th class="text-center">
+        Laudo<br>
+      </th>
+      <th class="text-center">
+        Vara<br>
+      </th>
+      <th class="text-center">
+        N° Processo<br>
+      </th>
+      <th class="text-center">
+        Lacre<br>
+      </th>
+      <th class="text-center">
+        Data Autor.<br>
+      </th>
+      <th class="text-center">
+        Caixa<br>
+      </th>
+      <th class="text-center">
+        Ofício<br>
+      </th>
+      <th class="text-center">
+        Delegacia<br>
+      </th>
+      <th class="text-center">
+        <br>
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngFor = "let item of entorpecentesLista">
+    <tr>
+      <td class="text-center">{{item.procedimento}}</td>
+      <td class="text-center">{{item.n_proced}}</td>
+      <td class="text-center">{{item.data_entrada}}</td>
+      <td class="text-center">{{item.investigado}}</td>
+      <td class="text-center">{{item.substancia}}</td>
+      <td class="text-center">{{item.quant}}</td>
+      <td class="text-center">{{item.und}}</td>
+      <td class="text-center">{{item.laudo}}</td>
+      <td class="text-center">{{item.vara}}</td>
+      <td class="text-center">{{item.n_processo}}</td>
+      <td class="text-center">{{item.lacre}}</td>
+      <td class="text-center">{{item.data_autorizacao}}</td>
+      <td class="text-center">{{item.caixa}}</td>
+      <td class="text-center">{{item.oficio}}</td>
+      <td class="text-center">{{item.delegacia}}</td>
+      <td class="text-center"> <button type="button" name="button" class="btn btn-danger" (click)="deleteItem(item._id)">Excluir</button></td>
+      <td class="text-center"> <button type="button" name="buttonEdit" class="btn btn-primary" (click)="showEditForm(item)" [disabled]="toggleForm">Editar</button></td>
+    </tr>
+   </tbody>
+</table>
+
+<!--------- LISTAR ITEM TESTE ---------->
+
+<br><br>
+<h2>
+	Lista de items:
+</h2>
+
+<div class="">
+	<div *ngFor = "let item of entorpecentesLista">
+
+		<div class="col-md-3">
+			{{item.userName}}
+		</div>
+		<div class="col-md-2">
+			{{item.procedimento}}
+		</div>
+		<div class="col-md-2">
+			{{item.n_proced}}
+		</div>
+		<div class="col-md-2">
+			{{item.quant}}
+		</div>
+		<div class="col-md-2">
+			{{item.und}}
+		</div>
+		<div class="col-md-2">
+			{{item.laudo}}
+		</div>
+		<div class="col-md-2">
+			{{item.vara}}
+		</div>
+		<div class="col-md-2">
+			{{item.n_processo}}
+		</div>
+		<div class="col-md-2">
+			{{item.lacre}}
+		</div>
+		<div class="col-md-2">
+			{{item.data_autorizacao}}
+		</div>
+		<div class="col-md-2">
+			{{item.caixa}}
+		</div>
+		<div class="col-md-2">
+			{{item.oficio}}
+		</div>
+		<div class="col-md-2">
+			{{item.delegacia}}
+		</div>
+
+		<div class="col-md-3">
+			<button type="button" name="button" class="btn btn-primary">Editar</button>
+		</div>
+			
+		<div class="col-md-3">
+			<button type="button" name="button" class="btn btn-danger" (click)="deleteItem(item._id)">Excluir</button>
+		</div>	
+	</div>
+</div>
+

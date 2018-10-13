@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { DataService } from '../data.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-drakon',

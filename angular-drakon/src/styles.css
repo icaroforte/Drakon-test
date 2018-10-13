@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+.favicon{
+	padding-right: 5px;
+}
+
+.bodyColor {
+    background-color: #F5F5F5;
+
+}
+
+.divDiameters{
+
+    padding-right: 30px;
+    padding-left: 30px;
+
+}
+
+table{
+    width:100%;
+}
+#example_filter{
+    float:right;
+}
+#example_paginate{
+    float:right;
+}
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+   
+}
